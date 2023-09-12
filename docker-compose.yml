@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  eshop-db:
+    image: "postgres:latest"
+    container_name: eshop-db
+    restart: always
+    ports: 
+      - "7432:5432"
+    volumes: 
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=mysecretpassword"
+      - "POSTGRES_DB=eshop-db"
