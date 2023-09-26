@@ -42,6 +42,11 @@ insert into product (id,category_id,ename,price,product_description,department_i
 insert into product (id,category_id,ename,price,product_description,department_id) 
     values (2,1,'Shirt for men UT design',300000,'Contemporary artist KAWS. Launching an exclusive UT t-shirt collection at UNIQLO on the occasion of the launch of the new art book edition from KAWS.',2);
 
+
+
+
+
+
 CREATE TABLE if not EXISTS product_image (
     id INT NOT NULL,
     product_id INT NOT NULL,
@@ -49,58 +54,6 @@ CREATE TABLE if not EXISTS product_image (
     PRIMARY KEY (id),
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
-
-CREATE TABLE if not EXISTS variation (
-    id INT NOT NULL,
-    ename VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE if not EXISTS product_variation (
-    id INT NOT NULL,
-    product_id int NOT NULL,
-    variation_id int NOT NULL,
-    ename VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (product_id) REFERENCES product(id),
-    FOREIGN KEY (variation_id) REFERENCES variation(id)
-);
-
-CREATE TABLE if not EXISTS option_size (
-    id INT NOT NULL,
-    ename VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE if not EXISTS product_variation_option (
-    id INT NOT NULL,
-    product_variation_id int NOT NULL,
-    option_size_id int NOT NULL,
-    ename VARCHAR(250) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (product_variation_id) REFERENCES product_variation(id),
-    FOREIGN KEY (option_size_id) REFERENCES option_size(id)
-);
-
-
-
-
-
-insert into variation(id,ename) values (1, 'white');
-insert into variation(id,ename) values (2, 'red');
-insert into variation(id,ename) values (3, 'green');
-insert into variation(id,ename) values (4, 'yellow');
-insert into variation(id,ename) values (5, 'gray');
-insert into variation(id,ename) values (6, 'brown');
-insert into variation(id,ename) values (7, 'blue');
-insert into variation(id,ename) values (8, 'black');
-insert into variation(id,ename) values (9, 'purple');
-insert into variation(id,ename) values (10, 'pink');
-
-insert into option_size(id,ename) values (1, 'S');
-insert into option_size(id,ename) values (2, 'M');
-insert into option_size(id,ename) values (3, 'L');
-insert into option_size(id,ename) values (4, 'XL');
 
 insert into product_image(id,product_id,ename) values (1,1, 'product_1_img_2');
 insert into product_image(id,product_id,ename) values (2,1, 'product_1_img_3');
@@ -117,4 +70,63 @@ insert into product_image(id,product_id,ename) values (11,2, 'product_2_img_5');
 insert into product_image(id,product_id,ename) values (12,2, 'product_2_img_6');
 insert into product_image(id,product_id,ename) values (13,2, 'product_2_img_7');
 insert into product_image(id,product_id,ename) values (14,2, 'product_2_img_8');
+
+
+CREATE TABLE if not EXISTS variation (
+    id INT NOT NULL,
+    ename VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+insert into variation(id,ename) values (1, 'white');
+insert into variation(id,ename) values (2, 'red');
+insert into variation(id,ename) values (3, 'green');
+insert into variation(id,ename) values (4, 'yellow');
+insert into variation(id,ename) values (5, 'gray');
+insert into variation(id,ename) values (6, 'brown');
+insert into variation(id,ename) values (7, 'blue');
+insert into variation(id,ename) values (8, 'black');
+insert into variation(id,ename) values (9, 'purple');
+insert into variation(id,ename) values (10, 'pink');
+
+CREATE TABLE if not EXISTS product_variation (
+    id INT NOT NULL,
+    product_id int NOT NULL,
+    variation_id int NOT NULL,
+    ename VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (product_id) REFERENCES product(id),
+    FOREIGN KEY (variation_id) REFERENCES variation(id)
+);
+insert into product_variation(id, product_id, variation_id, ename) values(1,)
+
+CREATE TABLE if not EXISTS option_size (
+    id INT NOT NULL,
+    ename VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+insert into option_size(id,ename) values (1, 'S');
+insert into option_size(id,ename) values (2, 'M');
+insert into option_size(id,ename) values (3, 'L');
+insert into option_size(id,ename) values (4, 'XL');
+
+CREATE TABLE if not EXISTS product_variation_option (
+    id INT NOT NULL,
+    product_variation_id int NOT NULL,
+    option_size_id int NOT NULL,
+    ename VARCHAR(250) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (product_variation_id) REFERENCES product_variation(id),
+    FOREIGN KEY (option_size_id) REFERENCES option_size(id)
+);
+
+
+
+
+
+
+
+
+
+
+
 

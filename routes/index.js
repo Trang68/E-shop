@@ -8,13 +8,11 @@ var db = require("../database/queries") ;
 
 router.get('/list', db.getAllDepartment);
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('home', { title: 'Express' });
-});
-// GET page list all department
-router.get('/listdepartment', function (req, res, next) {
-    res.render('listalldepartment', { title: 'Express' });
+/* GET list page. */
+router.get('/list', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+      res.sendFile(path.join(__dirname + "./views/index.html"));
+
 });
 
 module.exports = router;
