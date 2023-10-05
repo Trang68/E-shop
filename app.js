@@ -7,12 +7,14 @@ var app = express();
 
 // view engine setup
 app.engine('.html', require('ejs').__express);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public'));
+
 app.set('view engine', 'html');
 app.use(express.json());
 
 // app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname,'views'))); 
+app.use(express.static(path.join(__dirname,'public'))); 
+
 // app.use(express.static(__dirname));
 
 

@@ -11,7 +11,7 @@ router.get('/list', db.getAllDepartment);
 /* GET list page. */
 router.get('/list', function(req, res, next) {
   res.render('index', { title: 'Express' });
-      res.sendFile(path.join(__dirname + "./views/index.html"));
+      res.sendFile(path.join(__dirname + "./public/index.html"));
 
 });
 
